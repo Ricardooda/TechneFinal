@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pessoaModule">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Home</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="control/pessoa.js"></script>
+        
+    </head>
+    <body ng-controller="pessoaControl">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <div ng-include src="'menu.html'"></div>
+
+        <div>
+
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="cadastro" aria-controls="home" role="tab" data-toggle="tab">Cadastro</a></li>
+                <li role="presentation"><a href="registros" aria-controls="profile" role="tab" data-toggle="tab">Registros</a></li>
+
+            </ul>
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="cadastro">
+
+                    <form class="form-horizontal" >
+                        <div class="form-group" >
+                            <label for="codigo" class="col-sm-1 control-label">Código</label>
+                            <div class="col-sm-5">
+                                <input type="code" class="form-control" ng-model="pessoa.codigo" placeholder="Código">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nome" class="col-sm-1 control-label">Nome</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" ng-model="pessoa.nome" placeholder="Nome">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cpf" class="col-sm-1 control-label">CPF</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" ng-model="pessoa.cpf" placeholder="CPF">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="idade" class="col-sm-1 control-label">Idade</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" ng-model="pessoa.idade"placeholder="Idade">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-success" ng-click="salvar(pessoa);">Salvar</button>
+                        <button type="button" class="btn btn-info" ng-click="editar(pessoa);">Editar</button>
+                        <button type="button" class="btn btn-danger" ng-click="excluir(pessoa);">Excluir</button>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="registros">
+                    <table class="table table-hover" >
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Idade</th>
+                        <tr ng-repeat="pessoa in pesquisaPessoa"   ng-click="selecionaPessoa(pessoa);">
+                            <td>{{pessoa.codigo}}</td>
+                            <td>{{pessoa.nome}}</td>
+                            <td>{{pessoa.cpf}}</td>
+                            <td>{{pessoa.idade}}</td>
+                        </tr>
+                    </table>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </body>
+</html>
